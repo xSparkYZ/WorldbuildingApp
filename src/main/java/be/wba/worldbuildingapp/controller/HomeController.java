@@ -36,6 +36,10 @@ public class HomeController {
             projectList.getItems().add(0, name);
         });
     }
+    @FXML
+    private void handleExit() {
+        System.exit(0);
+    }
 
     @FXML
     private void handleOpenProject() {

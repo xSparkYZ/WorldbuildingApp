@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
@@ -15,8 +17,15 @@
         <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
     </padding>
 
-    <Label text="Your Projects"
-           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <!-- Header with Exit button -->
+    <HBox spacing="10.0">
+        <Label text="Your Projects"
+               style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Region fx:id="spacer" HBox.hgrow="ALWAYS"/>
+        <Button text="Exit"
+                onAction="#handleExit"
+                style="-fx-background-color: red; -fx-text-fill: white;" />
+    </HBox>
 
     <ListView fx:id="projectList"
               prefHeight="300.0"
