@@ -1,9 +1,12 @@
 package be.wba.worldbuildingapp.controller;
 
+import be.wba.worldbuildingapp.dao.ProjectDao;
+import be.wba.worldbuildingapp.dao.impl.ProjectDaoImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
 
+import java.util.List;
 import java.util.Optional;
 
 public class HomeController {
@@ -11,20 +14,27 @@ public class HomeController {
     @FXML
     private ListView<String> projectList;
 
+    private final ProjectDao projectDao = new ProjectDaoImpl();
+
     @FXML
     private void initialize() {
-        // Temporary dummy data
-        projectList.getItems().addAll("My Fantasy World", "Dawn of the Scion");
+        // Load projects from database
+        List<String> projects = projectDao.findAll();
+        projectList.getItems().addAll(projects);
     }
 
     @FXML
     private void handleNewProject() {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setHeaderText("Create New Project");
+        dialog.setTitle("New Project");
+        dialog.setHeaderText("Create a New Project");
         dialog.setContentText("Project name:");
 
         Optional<String> result = dialog.showAndWait();
-        result.ifPresent(name -> projectList.getItems().add(name));
+        result.ifPresent(name -> {
+            projectDao.save(name);
+            projectList.getItems().add(0, name);
+        });
     }
 
     @FXML
@@ -32,7 +42,7 @@ public class HomeController {
         String selected = projectList.getSelectionModel().getSelectedItem();
         if (selected != null) {
             System.out.println("Opening project: " + selected);
-            // Later: load project workspace
+            // Future: Open workspace view
         }
     }
 }

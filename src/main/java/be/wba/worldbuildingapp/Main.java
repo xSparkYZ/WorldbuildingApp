@@ -2,21 +2,24 @@ package be.wba.worldbuildingapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load the FXML file from resources/view/HomeScreen.fxml
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/HomePage.fxml"));
         Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
 
-        // Set up the main window
         primaryStage.setTitle("Worldbuilding App");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(scene);
+
+        // Start in full screen
+        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint(""); // optional: disables the hint text
         primaryStage.show();
     }
 
