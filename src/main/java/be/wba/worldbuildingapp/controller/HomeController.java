@@ -3,10 +3,7 @@ package be.wba.worldbuildingapp.controller;
 import be.wba.worldbuildingapp.dao.ProjectDao;
 import be.wba.worldbuildingapp.dao.impl.ProjectDaoImpl;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextInputDialog;
-
-import java.util.List;
+import javafx.scene.control.*;
 import java.util.Optional;
 
 public class HomeController {
@@ -18,27 +15,23 @@ public class HomeController {
 
     @FXML
     private void initialize() {
-        // Load projects from database
-        List<String> projects = projectDao.findAll();
-        projectList.getItems().addAll(projects);
+        projectList.getItems().addAll(projectDao.findAllProjectNames());
     }
 
     @FXML
     private void handleNewProject() {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("New Project");
-        dialog.setHeaderText("Create a New Project");
+        dialog.setHeaderText("Create New Project");
         dialog.setContentText("Project name:");
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(name -> {
-            projectDao.save(name);
-            projectList.getItems().add(0, name);
+            if (projectDao.save(name)) {
+                projectList.getItems().add(name);
+            } else {
+                showAlert("Error", "Project could not be saved.");
+            }
         });
-    }
-    @FXML
-    private void handleExit() {
-        System.exit(0);
     }
 
     @FXML
@@ -46,7 +39,40 @@ public class HomeController {
         String selected = projectList.getSelectionModel().getSelectedItem();
         if (selected != null) {
             System.out.println("Opening project: " + selected);
-            // Future: Open workspace view
+            // Later: load project workspace
         }
+    }
+
+    @FXML
+    private void handleExit() {
+        System.exit(0);
+    }
+
+    @FXML
+    private void handleDeleteProject() {
+        String selected = projectList.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+            confirmation.setTitle("Confirm Deletion");
+            confirmation.setHeaderText("Are you sure you want to delete this project?");
+            confirmation.setContentText("This action cannot be reversed.");
+
+            Optional<ButtonType> result = confirmation.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                if (projectDao.deleteByName(selected)) {
+                    projectList.getItems().remove(selected);
+                } else {
+                    showAlert("Error", "Project could not be deleted from the database.");
+                }
+            }
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert error = new Alert(Alert.AlertType.ERROR);
+        error.setTitle(title);
+        error.setHeaderText(null);
+        error.setContentText(message);
+        error.showAndWait();
     }
 }

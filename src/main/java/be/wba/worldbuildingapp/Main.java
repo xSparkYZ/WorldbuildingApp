@@ -17,9 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("Worldbuilding App");
         primaryStage.setScene(scene);
 
-        // Start in full screen
-        primaryStage.setFullScreen(true);
-        primaryStage.setFullScreenExitHint(""); // optional: disables the hint text
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
