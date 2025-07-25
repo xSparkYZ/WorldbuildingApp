@@ -3,7 +3,13 @@ package be.wba.worldbuildingapp.controller;
 import be.wba.worldbuildingapp.dao.ProjectDao;
 import be.wba.worldbuildingapp.dao.impl.ProjectDaoImpl;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.Optional;
 
 public class HomeController {
@@ -38,10 +44,24 @@ public class HomeController {
     private void handleOpenProject() {
         String selected = projectList.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            System.out.println("Opening project: " + selected);
-            // Later: load project workspace
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
+                Parent dashboardRoot = loader.load();
+
+                DashboardController controller = loader.getController();
+                controller.setProjectName(selected);
+
+                Stage stage = new Stage();
+                stage.setTitle("Dashboard - " + selected);
+                stage.setScene(new Scene(dashboardRoot));
+                stage.setMaximized(true);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
+
 
     @FXML
     private void handleExit() {
