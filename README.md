@@ -18,4 +18,4 @@ The goal of this project is to provide a free alternative to the numerous paid w
 Work in progress
 
 ## Sources
-This app is inspired by other world-building apps, such as WorldAnvil and Campfire.
+This app is inspired by other world-building apps, such as [WorldAnvil](https://www.worldanvil.com/) and [Campfire](http://www.campfirewriting.com/).
