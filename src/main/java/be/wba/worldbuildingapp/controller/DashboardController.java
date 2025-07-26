@@ -1,5 +1,6 @@
 package be.wba.worldbuildingapp.controller;
 
+import be.wba.worldbuildingapp.controller.ManuscriptController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,16 +17,20 @@ public class DashboardController {
     @FXML
     private StackPane mainContentPane;
 
-    @FXML
-    private void handleSaveAndExit() {
-        // TODO: Add save logic later
-        // Close this window and return to Home (project list)
-        Label label = projectNameLabel; // Just to ensure projectNameLabel is initialized (avoids warnings)
-        label.getScene().getWindow().hide(); // Closes the Dashboard window
-    }
+    private int currentProjectId;
 
     public void setProjectName(String name) {
         projectNameLabel.setText(name);
+    }
+
+    public void setProjectId(int id) {
+        this.currentProjectId = id;
+    }
+
+    @FXML
+    private void handleSaveAndExit() {
+        Label label = projectNameLabel;
+        label.getScene().getWindow().hide();
     }
 
     @FXML
@@ -50,8 +55,16 @@ public class DashboardController {
 
     private void loadContent(String fxmlPath) {
         try {
-            Node content = FXMLLoader.load(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Node content = loader.load();
             mainContentPane.getChildren().setAll(content);
+
+            if (fxmlPath.contains("Manuscript.fxml")) {
+                ManuscriptController controller = loader.getController();
+                controller.setProjectId(currentProjectId);
+                controller.loadChapters(); // Optional: can be removed if loading happens later
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

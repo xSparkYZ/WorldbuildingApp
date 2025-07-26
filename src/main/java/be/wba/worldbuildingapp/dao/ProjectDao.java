@@ -3,7 +3,8 @@ package be.wba.worldbuildingapp.dao;
 import java.util.List;
 
 public interface ProjectDao {
-    boolean save(String name);
     List<String> findAllProjectNames();
+    boolean save(String name);
     boolean deleteByName(String name);
+    int findIdByName(String name);
 }

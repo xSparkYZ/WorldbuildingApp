@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml">
-    <Label text="Manuscript View"/>
-</StackPane>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="be.wba.worldbuildingapp.controller.ManuscriptController"
+            prefWidth="800.0" prefHeight="600.0">
+
+    <!-- LEFT SIDEBAR (already present in Dashboard) -->
+    <!-- We assume this file is loaded inside the Dashboard center -->
+
+    <!-- CENTER -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Button text="Create chapter" onAction="#handleCreateChapter"
+                    style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+
+            <ListView fx:id="chapterList"
+                      VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: white; -fx-border-color: #ccc;" />
+        </VBox>
+    </center>
+
+</BorderPane>

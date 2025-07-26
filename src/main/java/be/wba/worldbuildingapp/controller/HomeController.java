@@ -46,26 +46,24 @@ public class HomeController {
         if (selected != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
-                Parent dashboardRoot = loader.load();
+                Parent root = loader.load();
+
+                int projectId = projectDao.findIdByName(selected);
 
                 DashboardController controller = loader.getController();
                 controller.setProjectName(selected);
+                controller.setProjectId(projectId);
 
                 Stage stage = new Stage();
                 stage.setTitle("Dashboard - " + selected);
-                stage.setScene(new Scene(dashboardRoot));
+                stage.setScene(new Scene(root));
                 stage.setMaximized(true);
                 stage.show();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }
-
-
-    @FXML
-    private void handleExit() {
-        System.exit(0);
     }
 
     @FXML
@@ -94,5 +92,10 @@ public class HomeController {
         error.setHeaderText(null);
         error.setContentText(message);
         error.showAndWait();
+    }
+
+    @FXML
+    private void handleExit() {
+        System.exit(0);
     }
 }
