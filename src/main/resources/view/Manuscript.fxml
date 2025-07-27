@@ -4,26 +4,52 @@
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
             fx:controller="be.wba.worldbuildingapp.controller.ManuscriptController"
             prefWidth="800.0" prefHeight="600.0">
 
-    <!-- LEFT SIDEBAR (already present in Dashboard) -->
-    <!-- We assume this file is loaded inside the Dashboard center -->
-
-    <!-- CENTER -->
     <center>
-        <VBox spacing="10">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <Button text="Create chapter" onAction="#handleCreateChapter"
-                    style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <StackPane fx:id="mainView" StackPane.alignment="CENTER">
 
-            <ListView fx:id="chapterList"
-                      VBox.vgrow="ALWAYS"
-                      style="-fx-background-color: white; -fx-border-color: #ccc;" />
-        </VBox>
+            <!-- BROWSER VIEW: chapter list on the left -->
+            <HBox fx:id="browserView" spacing="20">
+                <VBox spacing="10" prefWidth="250">
+                    <padding>
+                        <Insets top="20" right="0" bottom="20" left="20"/>
+                    </padding>
+                    <Button text="Create chapter" onAction="#handleCreateChapter"
+                            style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+
+                    <ListView fx:id="chapterList"
+                              VBox.vgrow="ALWAYS"
+                              style="-fx-background-color: white; -fx-border-color: #ccc;" />
+                </VBox>
+            </HBox>
+
+            <!-- EDITOR VIEW: writing space in center, chapter list on the right -->
+            <HBox fx:id="editorView" spacing="20" visible="false" managed="false">
+                <StackPane fx:id="manuscriptContentPane"
+                           HBox.hgrow="ALWAYS"
+                           style="-fx-background-color: #f8f8f8; -fx-border-color: #ccc;">
+                    <padding>
+                        <Insets top="20" right="0" bottom="20" left="20"/>
+                    </padding>
+                </StackPane>
+
+                <VBox spacing="10" prefWidth="250">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="0"/>
+                    </padding>
+                    <Button text="Create chapter" onAction="#handleCreateChapter"
+                            style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+
+                    <ListView fx:id="chapterListDuplicate"
+                              VBox.vgrow="ALWAYS"
+                              style="-fx-background-color: white; -fx-border-color: #ccc;" />
+                </VBox>
+            </HBox>
+
+        </StackPane>
     </center>
-
 </BorderPane>

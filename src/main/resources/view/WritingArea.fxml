@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="be.wba.worldbuildingapp.controller.WritingAreaController"
+      spacing="10" VBox.vgrow="ALWAYS">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <TextArea fx:id="textArea" wrapText="true" VBox.vgrow="ALWAYS"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button fx:id="saveButton" text="Save" onAction="#handleSave"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Label fx:id="statusLabel" text="" style="-fx-text-fill: #555555;"/>
+    </HBox>
+</VBox>
