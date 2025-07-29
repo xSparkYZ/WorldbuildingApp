@@ -48,12 +48,10 @@ public class ManuscriptController {
 
     @FXML
     private void initialize() {
-        // Shared cell factory for consistent look
         ListCellFactory factory = new ListCellFactory();
         chapterList.setCellFactory(factory);
         chapterListDuplicate.setCellFactory(factory);
 
-        // Set shared click handler
         chapterList.setOnMouseClicked(this::handleChapterClick);
         chapterListDuplicate.setOnMouseClicked(this::handleChapterClick);
     }
@@ -103,7 +101,6 @@ public class ManuscriptController {
         });
     }
 
-    // Shared cell factory class
     private static class ListCellFactory implements javafx.util.Callback<ListView<Chapter>, ListCell<Chapter>> {
         @Override
         public ListCell<Chapter> call(ListView<Chapter> listView) {

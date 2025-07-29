@@ -1,9 +1,11 @@
 package be.wba.worldbuildingapp.controller;
 
-import be.wba.worldbuildingapp.controller.ManuscriptController;
+import be.wba.worldbuildingapp.util.ThemeManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 
@@ -17,6 +19,9 @@ public class DashboardController {
     @FXML
     private StackPane mainContentPane;
 
+    @FXML
+    private CheckBox darkModeToggle;
+
     private int currentProjectId;
 
     public void setProjectName(String name) {
@@ -25,6 +30,13 @@ public class DashboardController {
 
     public void setProjectId(int id) {
         this.currentProjectId = id;
+    }
+
+    @FXML
+    private void initialize() {
+        if (darkModeToggle != null) {
+            darkModeToggle.setSelected(ThemeManager.isDarkMode());
+        }
     }
 
     @FXML
@@ -62,11 +74,22 @@ public class DashboardController {
             if (fxmlPath.contains("Manuscript.fxml")) {
                 ManuscriptController controller = loader.getController();
                 controller.setProjectId(currentProjectId);
-                controller.loadChapters(); // Optional: can be removed if loading happens later
+                controller.loadChapters();
             }
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleToggleDarkMode() {
+        boolean enabled = darkModeToggle.isSelected();
+        ThemeManager.toggleDarkMode(darkModeToggle.getScene(), enabled);
+
+        Scene scene = darkModeToggle.getScene();
+        if (scene != null) {
+            ThemeManager.applyTheme(scene);
         }
     }
 }

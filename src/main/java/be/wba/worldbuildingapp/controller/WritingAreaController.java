@@ -20,9 +20,6 @@ public class WritingAreaController {
     private TextArea textArea;
 
     @FXML
-    private Button saveButton;
-
-    @FXML
     private Label statusLabel;
 
     private final PauseTransition autoSaveDelay = new PauseTransition(Duration.seconds(1));

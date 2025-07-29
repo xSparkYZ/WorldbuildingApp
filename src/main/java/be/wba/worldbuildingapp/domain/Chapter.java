@@ -15,12 +15,6 @@ public class Chapter {
         this.content = content;
     }
 
-    // Overload for listing only
-    public Chapter(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     // Getters
     public int getId() {
         return id;
@@ -63,7 +57,6 @@ public class Chapter {
         this.content = content;
     }
 
-    // This is critical for displaying in ListView
     @Override
     public String toString() {
         return name;

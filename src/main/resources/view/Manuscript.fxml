@@ -12,7 +12,6 @@
     <center>
         <StackPane fx:id="mainView" StackPane.alignment="CENTER">
 
-            <!-- BROWSER VIEW: chapter list on the left -->
             <HBox fx:id="browserView" spacing="20">
                 <VBox spacing="10" prefWidth="250">
                     <padding>
@@ -27,7 +26,6 @@
                 </VBox>
             </HBox>
 
-            <!-- EDITOR VIEW: writing space in center, chapter list on the right -->
             <HBox fx:id="editorView" spacing="20" visible="false" managed="false">
                 <StackPane fx:id="manuscriptContentPane"
                            HBox.hgrow="ALWAYS"

@@ -9,5 +9,5 @@ public interface ChapterDao {
 
     List<Chapter> findByProjectId(int projectId);
 
-    boolean updateContent(int chapterId, String content); // ← Add this line
+    boolean updateContent(int chapterId, String content);
 }

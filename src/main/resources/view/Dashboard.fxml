@@ -39,6 +39,15 @@
         </BorderPane>
     </left>
 
+    <!-- Top bar with dark mode toggle -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <CheckBox fx:id="darkModeToggle" text="Dark Mode" onAction="#handleToggleDarkMode"/>
+        </HBox>
+    </top>
 
     <!-- Main content area -->
     <center>
