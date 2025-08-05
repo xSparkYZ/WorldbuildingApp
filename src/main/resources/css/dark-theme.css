@@ -7,11 +7,6 @@
     -fx-text-fill: white;
 }
 
-.button {
-    -fx-background-color: #333;
-    -fx-border-color: #555;
-}
-
 .text-area {
     -fx-control-inner-background: #1e1e1e;
     -fx-text-fill: white;
@@ -54,4 +49,40 @@
 
 .check-box {
     -fx-text-fill: white;
+}
+.root {
+    -fx-background-color: #121212;
+    -fx-text-fill: #ffffff;
+}
+
+.label {
+    -fx-text-fill: #ffffff;
+}
+
+.button:default {
+    -fx-background-color: #333333;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area {
+    -fx-control-inner-background: #1e1e1e;
+    -fx-text-fill: #ffffff;
+}
+
+.list-view {
+    -fx-background-color: #1e1e1e;
+    -fx-control-inner-background: #1e1e1e;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #444444;
+}
+
+.stack-pane, .vbox, .hbox, .border-pane {
+    -fx-background-color: #121212;
+}
+.stack-pane,
+.hbox,
+.vbox,
+.border-pane,
+.anchor-pane {
+    -fx-background-color: #121212;
 }

@@ -21,15 +21,13 @@
                             style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
 
                     <ListView fx:id="chapterList"
-                              VBox.vgrow="ALWAYS"
-                              style="-fx-background-color: white; -fx-border-color: #ccc;" />
+                              VBox.vgrow="ALWAYS"/>
                 </VBox>
             </HBox>
 
             <HBox fx:id="editorView" spacing="20" visible="false" managed="false">
                 <StackPane fx:id="manuscriptContentPane"
-                           HBox.hgrow="ALWAYS"
-                           style="-fx-background-color: #f8f8f8; -fx-border-color: #ccc;">
+                           HBox.hgrow="ALWAYS">
                     <padding>
                         <Insets top="20" right="0" bottom="20" left="20"/>
                     </padding>
@@ -43,8 +41,7 @@
                             style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
 
                     <ListView fx:id="chapterListDuplicate"
-                              VBox.vgrow="ALWAYS"
-                              style="-fx-background-color: white; -fx-border-color: #ccc;" />
+                              VBox.vgrow="ALWAYS"/>
                 </VBox>
             </HBox>
 

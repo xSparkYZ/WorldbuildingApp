@@ -1,8 +1,15 @@
 TODO LIST
 ------------------------------------------------------------------------
-- Add save functionality to save & exit button in project dashboard
-    (ONLY AFTER DATABASE IS FINISHED)
-
-- Add global dark mode
 
 - Finish tailoring layout homepage and project dashboard
+
+- Add image background to homepage
+
+- Design Encyclopedia tab
+
+- Design Maps tab
+
+- Design Settings tab
+
+- Implement RichTextFX into writing area
+

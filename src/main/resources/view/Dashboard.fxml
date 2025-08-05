@@ -11,7 +11,7 @@
 
     <!-- Sidebar on the left -->
     <left>
-        <BorderPane prefWidth="220" style="-fx-background-color: #eeeeee;" BorderPane.alignment="CENTER">
+        <BorderPane prefWidth="220" BorderPane.alignment="CENTER">
             <top>
                 <VBox spacing="15" alignment="TOP_LEFT">
                     <padding>
@@ -52,7 +52,7 @@
     <!-- Main content area -->
     <center>
         <StackPane fx:id="mainContentPane"
-                   style="-fx-background-color: #ffffff;"
                    BorderPane.alignment="CENTER"/>
     </center>
+
 </BorderPane>
