@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,10 +19,17 @@ public class HomeController {
     @FXML
     private ListView<String> projectList;
 
+    @FXML
+    private ImageView backgroundImage;
+
     private final ProjectDao projectDao = new ProjectDaoImpl();
 
     @FXML
     private void initialize() {
+        // Set fantasy background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream("/images/homebackground.png")));
+
+        // Load project list
         projectList.getItems().addAll(projectDao.findAllProjectNames());
     }
 
