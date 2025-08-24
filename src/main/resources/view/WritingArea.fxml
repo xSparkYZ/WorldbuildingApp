@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx"
@@ -13,7 +13,7 @@
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
 
-    <TextArea fx:id="textArea" wrapText="true" VBox.vgrow="ALWAYS"/>
+    <VBox fx:id="editorContainer" VBox.vgrow="ALWAYS"/>
 
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Button fx:id="saveButton" text="Save" onAction="#handleSave"
