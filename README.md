@@ -2,7 +2,7 @@
 Name to be determined<br/>
 <br/>
 ## Introduction
-I started learning coding, specifically **Java**, 10 months ago, and my first project is a personal application to assist me in my secondary hobby, which is writing.<br/>
+I started learning coding, specifically **Java**, near the end of 2024, and my first project is a personal application to assist me in my secondary hobby, which is writing.<br/>
 <br/>
 While still barebones, it will include a workspace to write in with formatting capabilities, as well as the ability to save attributes such as characters, countries, backstories, and more.<br/>
 
